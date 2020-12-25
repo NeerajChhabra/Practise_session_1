@@ -1,0 +1,66 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    sum = 0
+    for(var i =0; i < s.length; i++){
+        if(s[i] === 'M'){
+            if( i !== 0 && s[i-1] === 'C' ){
+                sum += 900
+            } else {
+                sum+= 1000
+            }
+        }
+        if(s[i] === 'D'){
+            if( i !== 0 && s[i-1] === 'C'){
+                sum += 400
+            } else {
+                sum+=500
+            }
+        }
+        if(s[i] === 'C'){
+            if(i !== 0 && s[i-1] === 'X'){
+                sum += 90
+            }else if(i !== s.length && (s[i+1] === 'D' || s[i+1] === 'M')){
+                sum+=0
+            }  else{
+                sum+= 100}
+        }
+        if(s[i] === 'L'){
+            if(i !== 0 && s[i-1] === 'X'){
+                sum += 40
+            }  else{
+                sum+= 50}
+            
+        }
+        if(s[i] === 'X'){
+            if(i !== 0 && s[i-1] === 'I'){
+                sum += 9
+            }
+            
+            else if(i != s.length -1 && (s[i+1] === 'L' || s[i+1] === 'C')){
+                sum+=0
+            }else{
+                sum+= 10}
+            
+        }
+        if(s[i] === 'V'){
+            if(i !== 0 && s[i-1] === 'I'){
+                sum += 4
+            } else{
+                sum+= 5}
+            
+        }
+        if(s[i] === 'I'){
+            if(i === s.length -1 || s[i + 1] === 'I'){
+                sum+=1
+            } if(i !== s.length-1 && (s[i+1] === 'X' || s[i+1] === 'V')){
+                sum+=0
+            }
+        }
+    
+    
+}
+return sum
+};
